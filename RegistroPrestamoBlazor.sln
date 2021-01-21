@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroPrestamoBlazor", "RegistroPrestamoBlazor.csproj", "{028B0CE9-C95B-41E8-870A-25BB229CCDFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{028B0CE9-C95B-41E8-870A-25BB229CCDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{028B0CE9-C95B-41E8-870A-25BB229CCDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{028B0CE9-C95B-41E8-870A-25BB229CCDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{028B0CE9-C95B-41E8-870A-25BB229CCDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C7E5019-4762-4D1D-A669-0C388A03B527}
+	EndGlobalSection
+EndGlobal
