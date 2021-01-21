@@ -6,10 +6,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="BLL\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Blazored.toast" Version="3.1.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="5.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">

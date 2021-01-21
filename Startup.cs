@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RegistroPrestamoBlazor.DAL;
+using RegistroPrestamoBlazor.BLL;
 
 namespace RegistroPrestamoBlazor
 {
@@ -34,6 +35,9 @@ namespace RegistroPrestamoBlazor
             services.AddDbContext<Contexto>(options => 
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
+
+            //Inyeccion de dependencia la BLL Personas
+            services.AddTransient<PersonasBLL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
