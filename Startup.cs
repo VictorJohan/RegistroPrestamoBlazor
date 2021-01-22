@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RegistroPrestamoBlazor.DAL;
 using RegistroPrestamoBlazor.BLL;
+using Blazored.Toast;
 
 namespace RegistroPrestamoBlazor
 {
@@ -35,7 +36,7 @@ namespace RegistroPrestamoBlazor
             services.AddDbContext<Contexto>(options => 
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
-
+            services.AddBlazoredToast();
             //Inyeccion de dependencia la BLL Personas
             services.AddTransient<PersonasBLL>();
             //Inyeccion de dependencia la BLL Prestamos
