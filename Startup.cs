@@ -38,6 +38,8 @@ namespace RegistroPrestamoBlazor
 
             //Inyeccion de dependencia la BLL Personas
             services.AddTransient<PersonasBLL>();
+            //Inyeccion de dependencia la BLL Prestamos
+            services.AddTransient<PrestamosBLL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
