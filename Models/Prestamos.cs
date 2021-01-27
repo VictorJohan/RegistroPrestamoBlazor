@@ -14,7 +14,7 @@ namespace RegistroPrestamoBlazor.Models
         public DateTime Fecha { get; set; } = DateTime.Now;
         [Required(ErrorMessage ="Es obligatorio introducir un concepto.")]
         public string Concepto { get; set; }
-        [Range(minimum:100, maximum:10000)]
+        [Range(minimum:100, maximum:1000000)]
         public double Monto { get; set; }
         public double Balance { get; set; }
         [Required(ErrorMessage ="Debe seleccionar un persona para asignar el prestamo.")]

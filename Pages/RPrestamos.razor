@@ -1,73 +1,71 @@
-﻿@page "/Personas"
-@page "/Personas/{PersonaId:int}"
+﻿@page "/Prestamos"
+@page "/Prestamos/{PrestamoId:int}"
+
 @inject PersonasBLL PersonasBLL
+@inject PrestamosBLL PrestamosBLL
 @inject IToastService toast
 
-
-<EditForm Model="Persona" OnValidSubmit="Guardar">
-    <DataAnnotationsValidator/>
+<EditForm Model="Prestamo" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
     <div class="card">
         <div class="card-header">
-            <h3>Registro Personas</h3>
+            <h3>Registro Prestamo</h3>
         </div>
 
         <div class="card-body">
             <form>
-                @*Persona Id*@
                 <div class="form-row align-items-center">
                     <div class="col">
                         <div class="form-group">
-                            <label>Persona Id</label>
+                            <label>Prestamo Id</label>
                             <div class="input-group">
-                                <InputNumber @bind-Value="Persona.PersonaId" class="form-control" />
+                                <InputNumber @bind-Value="Prestamo.PrestamoId" class="form-control" />
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-secondary input-group-text" style="z-index:0" @onclick="Buscar">Buscar</button>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
 
-                @*Nombres*@
+                @*Persona Id*@
                 <div class="form-group">
-                    <label>Nombres</label>
-                    <InputText @bind-Value="Persona.Nombres" class="form-control"/>
-                    <ValidationMessage For="(() => Persona.Nombres)"/>
+                    <label>Persona</label>
+                    <InputSelect @bind-Value="Prestamo.PersonaId" class="form-control">
+                        @foreach (var item in @personas)
+                        {
+                            <option value="@item.PersonaId">@item.Nombres</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="(() => Prestamo.PersonaId)" />
                 </div>
 
-                @*Cedula*@
+                @*Fecha*@
                 <div class="form-group">
-                    <label>Cédula</label>
-                    <InputText @bind-Value="Persona.Cedula" class="form-control"/>
-                    <ValidationMessage For="(() => Persona.Cedula)"/>
+                    <label>Fecha</label>
+                    <InputDate @bind-Value="Prestamo.Fecha" class="form-control" />
                 </div>
 
-                @*Fecha de Nacimiento*@
+                @*Concepto*@
                 <div class="form-group">
-                    <label>Fecha Nacimiento</label>
-                    <InputDate @bind-Value="Persona.FechaNacimiento" class="form-control"/>
-                    <ValidationMessage For="(() => Persona.FechaNacimiento)"/>
+                    <label>Concepto</label>
+                    <InputTextArea @bind-Value="Prestamo.Concepto" class="form-control" />
+                    <ValidationMessage For="(() => Prestamo.Concepto)" />
                 </div>
 
-                @*Telefono*@
+                @*Monto*@
                 <div class="form-group">
-                    <label>Teléfono</label>
-                    <InputText @bind-Value="Persona.Telefono" class="form-control"/>
-                    <ValidationMessage For="(() => Persona.Telefono)"/>
-                </div>
-
-                @*Direccion*@
-                <div class="form-group">
-                    <label>Dirección</label>
-                    <InputText @bind-Value="Persona.Direccion" class="form-control"/>
-                    <ValidationMessage For="(() => Persona.Direccion)"/>
+                    <label>Monto</label>
+                    <InputNumber @bind-Value="Prestamo.Monto" class="form-control" />
+                    <ValidationMessage For="(() => Prestamo.Monto)" />
                 </div>
 
                 @*Balance*@
                 <div class="form-group">
                     <label>Balance</label>
-                    <InputNumber @bind-Value="Persona.Balance" class="form-control"/>
+                    <InputNumber @bind-Value="Prestamo.Balance" class="form-control" readonly />
                 </div>
+
             </form>
         </div>
 
@@ -78,30 +76,29 @@
                 <button type="button" class="btn btn-danger" @onclick="Eliminar">Eliminar</button>
             </div>
         </div>
-
     </div>
 </EditForm>
 
-
 @code {
     [Parameter]
-    public int PersonaId { get; set; }
+    public int PrestamoId { get; set; }
 
-    Personas Persona = new Personas();
+    Prestamos Prestamo = new Prestamos();
+    List<Personas> personas = new List<Personas>();
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         Nuevo();
+        personas = await PersonasBLL.GetPersonas();
     }
 
     public async void Buscar()
     {
-        var registro = await PersonasBLL.Buscar(Persona.PersonaId);
+        var registro = await PrestamosBLL.Buscar(Prestamo.PrestamoId);
 
         if (registro != null)
         {
-            Persona = registro;
-
+            Prestamo = registro;
         }
         else
         {
@@ -117,23 +114,20 @@
     public async void Guardar()
     {
 
-        if (await PersonasBLL.Guardar(Persona))
+        if (await PrestamosBLL.Guardar(Prestamo))
         {
-
             toast.ShowSuccess("Guardado");
             Limpiar();
-
         }
         else
         {
             toast.ShowError("No se logró guardar el registro.");
-
         }
     }
 
     public async void Eliminar()
     {
-        if (await PersonasBLL.Eliminar(Persona.PersonaId))
+        if (await PrestamosBLL.Eliminar(Prestamo.PrestamoId))
         {
             toast.ShowSuccess("Eliminado");
             Limpiar();
@@ -141,14 +135,12 @@
         else
         {
             toast.ShowError("No se logró eliminar el registro.");
-
         }
     }
 
     public void Limpiar()
     {
-        Persona = new Personas();
+        Prestamo = new Prestamos();
     }
-
 
 }

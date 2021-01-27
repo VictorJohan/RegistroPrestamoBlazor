@@ -178,13 +178,14 @@ namespace RegistroPrestamoBlazor.BLL
             persona.Balance -= AuxPrestamo.Monto;
             Contexto.Entry(persona).State = EntityState.Modified;
             await Contexto.SaveChangesAsync();
+
         }
 
         //Modifica el balance de una persona segun la modificacion del monto de un prestamo.
         private void ModificarBalancePersona(Prestamos prestamo)
         {
-            RestarBalacePersona(prestamo);//Se elimina el monto del prestamo antiguo.
-            SumarBalacePersona(prestamo);//Se suma el nuevo monto.
+            RestarBalacePersona(prestamo);
+            SumarBalacePersona(prestamo);
         }
     }
 }

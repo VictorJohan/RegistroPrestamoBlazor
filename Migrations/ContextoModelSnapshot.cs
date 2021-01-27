@@ -59,6 +59,7 @@ namespace RegistroPrestamoBlazor.Migrations
                         .HasColumnType("REAL");
 
                     b.Property<string>("Concepto")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")

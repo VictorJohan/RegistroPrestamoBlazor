@@ -9,8 +9,8 @@ using RegistroPrestamoBlazor.DAL;
 namespace RegistroPrestamoBlazor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210121204544_Migacion_Inicial")]
-    partial class Migacion_Inicial
+    [Migration("20210122064017_Migracion_Inicial")]
+    partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,7 @@ namespace RegistroPrestamoBlazor.Migrations
                         .HasColumnType("REAL");
 
                     b.Property<string>("Concepto")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")

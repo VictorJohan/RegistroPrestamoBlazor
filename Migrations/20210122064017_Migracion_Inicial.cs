@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistroPrestamoBlazor.Migrations
 {
-    public partial class Migacion_Inicial : Migration
+    public partial class Migracion_Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,7 @@ namespace RegistroPrestamoBlazor.Migrations
                     PrestamoId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Concepto = table.Column<string>(type: "TEXT", nullable: true),
+                    Concepto = table.Column<string>(type: "TEXT", nullable: false),
                     Monto = table.Column<double>(type: "REAL", nullable: false),
                     Balance = table.Column<double>(type: "REAL", nullable: false),
                     PersonaId = table.Column<int>(type: "INTEGER", nullable: false)
