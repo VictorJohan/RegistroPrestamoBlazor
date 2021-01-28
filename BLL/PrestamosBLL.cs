@@ -74,7 +74,17 @@ namespace RegistroPrestamoBlazor.BLL
 
             try
             {
+                var aux = Contexto
+                   .Set<Prestamos>()
+                   .Local.FirstOrDefault(p => p.PrestamoId == prestamo.PrestamoId);
+
+                if (aux != null)
+                {
+                    Contexto.Entry(aux).State = EntityState.Detached;
+                }
+
                 Contexto.Entry(prestamo).State = EntityState.Modified;
+
                 ok = await Contexto.SaveChangesAsync() > 0;
             }
             catch (Exception)

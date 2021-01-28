@@ -49,7 +49,7 @@ namespace RegistroPrestamoBlazor.BLL
 
             try
             {
-                await Contexto.Personas.AddAsync(persona);
+               await Contexto.Personas.AddAsync(persona);
                 ok = await Contexto.SaveChangesAsync() > 0;
             }
             catch (Exception)
@@ -67,6 +67,15 @@ namespace RegistroPrestamoBlazor.BLL
             
             try
             {
+                var aux = Contexto
+                    .Set<Personas>()
+                    .Local.FirstOrDefault(p => p.PersonaId == persona.PersonaId);
+
+                if(aux != null)
+                {
+                    Contexto.Entry(aux).State = EntityState.Detached;
+                }
+
                 Contexto.Entry(persona).State = EntityState.Modified;
                 ok = await Contexto.SaveChangesAsync() > 0;
             }
@@ -108,7 +117,7 @@ namespace RegistroPrestamoBlazor.BLL
                 var registro = await Contexto.Personas.FindAsync(id);
                 if(registro != null)
                 {
-                    Contexto.Personas.Remove(registro);
+                    Contexto.Entry(registro).State = EntityState.Deleted;
                     ok = await Contexto.SaveChangesAsync() > 0;
                 }
             }

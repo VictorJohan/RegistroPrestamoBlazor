@@ -118,7 +118,7 @@
 
     public async void Guardar()
     {
-
+        Persona.PersonaId = this.PersonaId;//Esta linea la coloque porque esa propiedad de la entidad tenia 0 como valor.
         if (await personasBLL.Guardar(Persona))
         {
 
