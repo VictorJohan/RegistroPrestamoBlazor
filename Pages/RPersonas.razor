@@ -1,6 +1,5 @@
 ﻿@page "/Personas"
 @page "/Personas/{PersonaId:int}"
-@inject PersonasBLL PersonasBLL
 @inject IToastService toast
 
 
@@ -84,6 +83,9 @@
 
 
 @code {
+    [Inject]
+    private PersonasBLL personasBLL { get; set; }
+
     [Parameter]
     public int PersonaId { get; set; }
 
@@ -96,7 +98,7 @@
 
     public async void Buscar()
     {
-        var registro = await PersonasBLL.Buscar(Persona.PersonaId);
+        var registro = await personasBLL.Buscar(Persona.PersonaId);
 
         if (registro != null)
         {
@@ -117,7 +119,7 @@
     public async void Guardar()
     {
 
-        if (await PersonasBLL.Guardar(Persona))
+        if (await personasBLL.Guardar(Persona))
         {
 
             toast.ShowSuccess("Guardado");
@@ -133,7 +135,7 @@
 
     public async void Eliminar()
     {
-        if (await PersonasBLL.Eliminar(Persona.PersonaId))
+        if (await personasBLL.Eliminar(Persona.PersonaId))
         {
             toast.ShowSuccess("Eliminado");
             Limpiar();
