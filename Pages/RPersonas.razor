@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label>Persona Id</label>
                             <div class="input-group">
-                                <InputNumber @bind-Value="Persona.PersonaId" class="form-control" />
+                                <InputNumber @bind-Value="this.PersonaId" class="form-control" />
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-secondary input-group-text" style="z-index:0" @onclick="Buscar">Buscar</button>
                                 </div>
@@ -98,7 +98,7 @@
 
     public async void Buscar()
     {
-        var registro = await personasBLL.Buscar(Persona.PersonaId);
+        var registro = await personasBLL.Buscar(this.PersonaId);
 
         if (registro != null)
         {
@@ -150,6 +150,7 @@
     public void Limpiar()
     {
         Persona = new Personas();
+        this.PersonaId = 0;
     }
 
 
