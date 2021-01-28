@@ -11,7 +11,7 @@ namespace RegistroPrestamoBlazor.BLL
 {
     public class PrestamosBLL
     {
-        public Contexto Contexto { get; set; }
+        private Contexto Contexto { get; set; }
 
         public PrestamosBLL(Contexto contexto)
         {
