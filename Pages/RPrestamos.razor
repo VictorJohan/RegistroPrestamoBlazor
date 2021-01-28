@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label>Prestamo Id</label>
                             <div class="input-group">
-                                <InputNumber @bind-Value="Prestamo.PrestamoId" class="form-control" />
+                                <InputNumber @bind-Value="this.PrestamoId" class="form-control" />
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-secondary input-group-text" style="z-index:0" @onclick="Buscar">Buscar</button>
                                 </div>
@@ -94,7 +94,7 @@
 
     public async void Buscar()
     {
-        var registro = await PrestamosBLL.Buscar(Prestamo.PrestamoId);
+        var registro = await PrestamosBLL.Buscar(this.PrestamoId);
 
         if (registro != null)
         {
@@ -127,7 +127,7 @@
 
     public async void Eliminar()
     {
-        if (await PrestamosBLL.Eliminar(Prestamo.PrestamoId))
+        if (await PrestamosBLL.Eliminar(this.PrestamoId))
         {
             toast.ShowSuccess("Eliminado");
             Limpiar();
@@ -141,6 +141,7 @@
     public void Limpiar()
     {
         Prestamo = new Prestamos();
+        this.PrestamoId = 0;
     }
 
 }

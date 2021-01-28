@@ -135,7 +135,7 @@
 
     public async void Eliminar()
     {
-        if (await personasBLL.Eliminar(Persona.PersonaId))
+        if (await personasBLL.Eliminar(this.PersonaId))
         {
             toast.ShowSuccess("Eliminado");
             Limpiar();

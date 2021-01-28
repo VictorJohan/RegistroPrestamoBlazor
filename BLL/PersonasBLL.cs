@@ -86,9 +86,9 @@ namespace RegistroPrestamoBlazor.BLL
             try
             {
                 persona = await Contexto.Personas
-                    .Where(p => p.PersonaId == id)
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync();
+                   .Where(p => p.PersonaId == id)
+                   .AsNoTracking()
+                   .FirstOrDefaultAsync();
             }
             catch (Exception)
             {

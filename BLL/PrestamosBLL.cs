@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 using RegistroPrestamoBlazor.DAL;
 using RegistroPrestamoBlazor.Models;
 using System;
@@ -12,7 +13,7 @@ namespace RegistroPrestamoBlazor.BLL
     public class PrestamosBLL
     {
         private Contexto Contexto { get; set; }
-
+        
         public PrestamosBLL(Contexto contexto)
         {
             this.Contexto = contexto;
@@ -176,7 +177,7 @@ namespace RegistroPrestamoBlazor.BLL
         private async void RestarBalacePersona(Prestamos prestamo)
         {
             Personas persona = await Contexto.Personas.FindAsync(prestamo.PersonaId);
-            var AuxPrestamo = await Contexto.Prestamos.FindAsync(prestamo.PrestamoId);
+            var AuxPrestamo = await Buscar(prestamo.PrestamoId);
 
             persona.Balance -= AuxPrestamo.Monto;
             Contexto.Entry(persona).State = EntityState.Modified;
