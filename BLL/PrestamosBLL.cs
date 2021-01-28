@@ -91,7 +91,10 @@ namespace RegistroPrestamoBlazor.BLL
 
             try
             {
-                prestamos = await Contexto.Prestamos.FindAsync(id);
+                prestamos = await Contexto.Prestamos
+                    .Where(p => p.PrestamoId == id)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync();
             }
             catch (Exception)
             {
