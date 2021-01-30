@@ -6,6 +6,25 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="RegistroPrestamoBlazorTest\**" />
+	  <Compile Remove="RegistroPrestamosBlazorTest\**" />
+	  <Compile Remove="TestPrestamoBlazor\**" />
+	  <Compile Remove="TestRegistroPrestamoBlazor\**" />
+	  <Content Remove="RegistroPrestamoBlazorTest\**" />
+	  <Content Remove="RegistroPrestamosBlazorTest\**" />
+	  <Content Remove="TestPrestamoBlazor\**" />
+	  <Content Remove="TestRegistroPrestamoBlazor\**" />
+	  <EmbeddedResource Remove="RegistroPrestamoBlazorTest\**" />
+	  <EmbeddedResource Remove="RegistroPrestamosBlazorTest\**" />
+	  <EmbeddedResource Remove="TestPrestamoBlazor\**" />
+	  <EmbeddedResource Remove="TestRegistroPrestamoBlazor\**" />
+	  <None Remove="RegistroPrestamoBlazorTest\**" />
+	  <None Remove="RegistroPrestamosBlazorTest\**" />
+	  <None Remove="TestPrestamoBlazor\**" />
+	  <None Remove="TestRegistroPrestamoBlazor\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Blazored.toast" Version="3.1.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="5.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
