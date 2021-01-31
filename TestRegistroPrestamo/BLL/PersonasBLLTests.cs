@@ -7,54 +7,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TestRegistroPrestamo.DALTest;
 
 namespace RegistroPrestamoBlazor.BLL.Tests
 {
     [TestClass()]
     public class PersonasBLLTests
     {
+        private Contexto _contexto;
+        private PersonasBLL personasBLL;
+
+        [TestInitialize]
+        private void UnitTest()
+        {
+            _contexto = ContextoTest.GetContexto();
+            personasBLL = new PersonasBLL(_contexto);
+        }
+
         [TestMethod()]
         public void PersonasBLLTest()
         {
-            Assert.IsTrue(true);
+            Assert.Fail();
         }
 
         [TestMethod()]
         public async void GuardarTest()
         {
-            PersonasBLL personasBLL = new PersonasBLL(_contexto);
-            Personas personas = new Personas
+            bool ok = false;
+            Personas personas = new Personas()
             {
                 PersonaId = 1,
-                Nombres = "Victor Johan Palma Rodriguez",
+                Nombres = "Victor Johan",
                 Cedula = "111-1111111-1",
-                Telefono = "809-664-3559",
                 FechaNacimiento = DateTime.Now,
                 Direccion = "Av. Caonabo",
+                Telefono = "000-000-0000",
                 Balance = 0
             };
 
-
-            Assert.IsTrue(await personasBLL.Guardar(personas));
+            ok = await personasBLL.Guardar(personas);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod()]
-        public void ExisteTest()
+        public async void ExisteTest()
         {
-            Assert.Fail();
+            bool ok = false;
+            ok = await personasBLL.Existe(1);
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod()]
-        public void BuscarTest()
+        public async void BuscarTest()
         {
-            Assert.Fail();
-        }
+            Personas personas;
+            bool ok = false;
 
-        [TestMethod()]
-        public void EliminarTest()
-        {
-            Assert.Fail();
+            personas = await personasBLL.Buscar(1);
+            if(personas != null) { ok = true; }
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod()]
@@ -65,6 +78,12 @@ namespace RegistroPrestamoBlazor.BLL.Tests
 
         [TestMethod()]
         public void GetPersonasTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void EliminarTest()
         {
             Assert.Fail();
         }

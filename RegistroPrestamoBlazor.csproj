@@ -5,23 +5,31 @@
 		<StartWorkinkDirectory>$(MSBuildProjectDirectory)</StartWorkinkDirectory>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <Compile Remove="RegistroPrestamoBlazorTest\**" />
 	  <Compile Remove="RegistroPrestamosBlazorTest\**" />
 	  <Compile Remove="TestPrestamoBlazor\**" />
 	  <Compile Remove="TestRegistroPrestamoBlazor\**" />
+	  <Compile Remove="TestRegistroPrestamo\**" />
 	  <Content Remove="RegistroPrestamoBlazorTest\**" />
 	  <Content Remove="RegistroPrestamosBlazorTest\**" />
 	  <Content Remove="TestPrestamoBlazor\**" />
 	  <Content Remove="TestRegistroPrestamoBlazor\**" />
+	  <Content Remove="TestRegistroPrestamo\**" />
 	  <EmbeddedResource Remove="RegistroPrestamoBlazorTest\**" />
 	  <EmbeddedResource Remove="RegistroPrestamosBlazorTest\**" />
 	  <EmbeddedResource Remove="TestPrestamoBlazor\**" />
 	  <EmbeddedResource Remove="TestRegistroPrestamoBlazor\**" />
+	  <EmbeddedResource Remove="TestRegistroPrestamo\**" />
 	  <None Remove="RegistroPrestamoBlazorTest\**" />
 	  <None Remove="RegistroPrestamosBlazorTest\**" />
 	  <None Remove="TestPrestamoBlazor\**" />
 	  <None Remove="TestRegistroPrestamoBlazor\**" />
+	  <None Remove="TestRegistroPrestamo\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -35,7 +43,7 @@
 
 	<ItemGroup>
 	  <None Update="Data\Prestamos.db">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 
